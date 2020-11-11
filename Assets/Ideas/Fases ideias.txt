@@ -1,0 +1,3 @@
+Fase explicando fonte: fase escura
+Fase motherboard: explicando circuitos e componentes da placa mãe
+Na parte de explicar sobre programação pensei em fazer um sistema de escolha, em que cada fase o cara tivesse que escolher entre facilitar x e dificultar y ou facilitar y e dificultar x

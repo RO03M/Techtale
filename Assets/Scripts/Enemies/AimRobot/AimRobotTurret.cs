@@ -7,6 +7,8 @@ public class AimRobotTurret : MonoBehaviour {
     public GameObject aimRobotBullet;
     public float bulletSpeed = 5;
     public float cloneDestroyTime = 5;
+    public bool locked;
+    public int lockOptionsDegress;
     public float fireDelay;
     public float minDistance;
 
@@ -20,6 +22,8 @@ public class AimRobotTurret : MonoBehaviour {
         aimRobotBehaviour = gameObject.GetComponentInParent<AimRobotBehaviour>();
         minDistance = aimRobotBehaviour.minDistance;
         fireDelay = aimRobotBehaviour.fireDelay;
+        locked = aimRobotBehaviour.locked;
+        lockOptionsDegress = (int) aimRobotBehaviour.lockOptionsDegress;
     }
 
     private void Update() {
@@ -27,10 +31,18 @@ public class AimRobotTurret : MonoBehaviour {
         if (isPlayable) {
             LookAt();
             if (Input.GetMouseButtonDown(0) && canFire) Fire();
-        } else DefaultBehaviour();
+        } else {
+            if (locked) LockBehaviour();
+            else FollowBehaviour();
+        }
     }
 
-    private void DefaultBehaviour() {
+    private void LockBehaviour() {
+        LookAt(lockOptionsDegress);
+        Fire();
+    }
+
+    private void FollowBehaviour() {
         Vector3 playerPosition = GameObject.Find("Player").transform.position;
         float currentDistance = Vector3.Distance(transform.position, playerPosition);
         if (currentDistance <= minDistance) {
@@ -59,6 +71,16 @@ public class AimRobotTurret : MonoBehaviour {
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, zAngle));
     }
 
+    private void LookAt(int angle) {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        zAngle = angle;
+    }
+
+    private void LookAt(float angle) {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        zAngle = angle;
+    }
+
     private void Fire() {
         if (!canFire) return;
         Quaternion quaternionAngle = Quaternion.Euler(new Vector3(0, 0, zAngle));
@@ -68,7 +90,9 @@ public class AimRobotTurret : MonoBehaviour {
         float sin = Mathf.Sin(angle);
         GameObject bulletClone = Instantiate(aimRobotBullet, transform.position, quaternionAngle);
         Rigidbody2D cloneRb = bulletClone.GetComponent<Rigidbody2D>();
+        BulletHandler cloneHandler = bulletClone.GetComponent<BulletHandler>();
         cloneRb.velocity = new Vector2(cos * bulletSpeed, sin * bulletSpeed);
+        cloneHandler.parentObject = this.transform.parent.gameObject;
         StartCoroutine(FireDelay());
         Destroy(cloneRb, cloneDestroyTime);
     }

@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
@@ -292,6 +292,16 @@ PrefabInstance:
         type: 3}
       propertyPath: isPlayable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288003357735013819, guid: 5cb062a738cec9448a1856c8cb2ad1db,
+        type: 3}
+      propertyPath: lockOptionsDegress
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288003357735013819, guid: 5cb062a738cec9448a1856c8cb2ad1db,
+        type: 3}
+      propertyPath: locked
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cb062a738cec9448a1856c8cb2ad1db, type: 3}
@@ -553,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
@@ -2987,7 +2997,7 @@ PrefabInstance:
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
@@ -3103,7 +3113,7 @@ PrefabInstance:
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
@@ -3149,6 +3159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019837024628656893, guid: 5b84363f23655744c981d67ed1ba72ec,
+        type: 3}
+      propertyPath: m_TagString
+      value: Router
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b84363f23655744c981d67ed1ba72ec, type: 3}
@@ -3509,6 +3524,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AimRobot
       objectReference: {fileID: 0}
+    - target: {fileID: 4288003357735013819, guid: 5cb062a738cec9448a1856c8cb2ad1db,
+        type: 3}
+      propertyPath: RENNER
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288003357735013819, guid: 5cb062a738cec9448a1856c8cb2ad1db,
+        type: 3}
+      propertyPath: locked
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cb062a738cec9448a1856c8cb2ad1db, type: 3}
 --- !u!4 &1840983366 stripped
@@ -3544,11 +3569,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 743321134}
   - {fileID: 172914088}
   - {fileID: 1840983366}
   - {fileID: 599154862}
   - {fileID: 1143247243}
+  - {fileID: 743321134}
   m_Father: {fileID: 1762544145}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3788,7 +3813,7 @@ PrefabInstance:
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8019837024391004940, guid: 5b84363f23655744c981d67ed1ba72ec,
         type: 3}
@@ -3829,6 +3854,11 @@ PrefabInstance:
         type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019837024628656893, guid: 5b84363f23655744c981d67ed1ba72ec,
+        type: 3}
+      propertyPath: m_TagString
+      value: Router
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b84363f23655744c981d67ed1ba72ec, type: 3}

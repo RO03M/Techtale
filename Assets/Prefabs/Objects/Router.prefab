@@ -192,7 +192,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1629752781
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: -2914426986703795747, guid: 02bb1894e5a02054f94c90ca901f80e3,
     type: 3}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 8019837024628656834}
   m_Layer: 0
   m_Name: InteractionTrigger
-  m_TagString: Untagged
+  m_TagString: Router
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -492,20 +492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggered: 0
   interactKey: 101
-  action:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ShowPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  enableSystem: {fileID: 0}
   interactKeySprite: {fileID: -2892467680861809217, guid: 02bb1894e5a02054f94c90ca901f80e3,
     type: 3}
 --- !u!61 &8019837024628656834

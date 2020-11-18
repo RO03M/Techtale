@@ -28,11 +28,13 @@ public class Interaction : MonoBehaviour {
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        triggered = true;
+        if (other.gameObject.tag == "Player")
+            triggered = true;
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        triggered = false;
+        if (other.gameObject.tag == "Player")
+            triggered = false;
     }
 
 }

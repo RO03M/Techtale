@@ -4,17 +4,19 @@ using UnityEngine;
 
 public static class PlayerInfo {
     
-    private static int direction = 1;//1 is default facing
-    public static float dashTime;
-    public static Vector2 velocity = Vector2.zero;
+    public static bool canDash = true;
+    public static bool canJump = true;
+    public static bool canMove = true;
     public static Vector2 colliderCenter;
     public static Vector2 colliderExtents;
-    public static bool isGrounded;
-    public static bool canMove = true;
+    public static float dashTime;
+    private static int direction = 1;//1 is default facing
     public static bool isDashing = false;
-    public static bool canDash = true;
-    public static bool isJumping = false;
     public static bool isFalling = false;
+    public static bool isGrounded;
+    public static bool isJumping = false;
+    public static bool isUsingDHCPower = false;
+    public static Vector2 velocity = Vector2.zero;
 
     public static int facing {
         get {

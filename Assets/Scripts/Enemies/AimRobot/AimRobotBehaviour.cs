@@ -13,12 +13,15 @@ public class AimRobotBehaviour : MonoBehaviour {
     public AimRobotLockOptions lockOptionsDegress;
     public float minDistance = 10;
     public int timeToBack = 10;
+    public GameObject[] particlesObj;
 
     private SpriteRenderer spriteRenderer;
     private int coroutineController = 0;
+    private GameObject player;
 
     private void Start() {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
+        player = GameObject.Find("Player");
     }
 
     private void Update() {
@@ -30,16 +33,34 @@ public class AimRobotBehaviour : MonoBehaviour {
     }
 
     private IEnumerator BackTransition() {
+        int index = player.GetComponent<DHCPower>().aimRobots.IndexOf(this.gameObject);
         yield return new WaitForSeconds(timeToBack);
         isPlayable = false;
+        player.GetComponent<DHCPower>().aimRobotCount--;
+        player.GetComponent<DHCPower>().aimRobots.Remove(this.gameObject);
         coroutineController = 0;
         spriteRenderer.sprite = defaultSprite;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.name == "AimRobotBullet(Clone)") {
-            if (other.gameObject.GetComponent<BulletHandler>().parentObject != this.gameObject)
-                Destroy(this.gameObject);
+            if (other.gameObject.GetComponent<BulletHandler>().parentObject != this.gameObject) {
+                DestroyAimRobot();
+            }
+        }
+    }
+
+    public void DestroyAimRobot() {
+        Destroy(this.gameObject);
+        DestroyEffects();
+    }
+
+    private void DestroyEffects() {
+        for (int i = 0; i < particlesObj.Length; i++) {
+            GameObject particleClone = Instantiate(particlesObj[i], this.transform.position, Quaternion.identity);
+            ParticleSystem particleSystem = particleClone.GetComponent<ParticleSystem>();
+            float timeToDestroy = particleSystem.duration * particleSystem.startLifetime;
+            Destroy(particleClone, timeToDestroy);
         }
     }
 

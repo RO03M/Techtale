@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class DHCPower : MonoBehaviour {
 
+    public List<GameObject> aimRobots;
+    public int aimRobotCount = 0;
+    public GameObject dhcpLight;
     public float radius = 10;
     public GameObject rippleEffect;
     public float rippleTime = 2;
     [Tooltip("Amount of times that the ripple effect will grow")]
     public float rippleSmoothness = 100;
 
-    private int aimRobotCount = 0;
     private bool canCallEffect = false;
     private int callEffectCount = 0;
     private float effectTime;
@@ -21,10 +23,15 @@ public class DHCPower : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.L)) {
+        if (Input.GetKeyDown(KeyCode.L) && !PlayerInfo.isUsingDHCPower && PlayerInfo.isGrounded) {
+            PlayerInfo.isUsingDHCPower = true;
+            dhcpLight.SetActive(true);
             AimRobotDetection();
             canCallEffect = true;
         }
+
+
+        if (Input.GetMouseButtonDown(1) && aimRobotCount == 1) aimRobots[0].GetComponent<AimRobotBehaviour>().DestroyAimRobot();
 
         if (canCallEffect && callEffectCount == 0) {
             StartCoroutine(RippleIncrease());
@@ -34,7 +41,8 @@ public class DHCPower : MonoBehaviour {
 
     private void AimRobotDetection() {
         Collider2D[] arrayObjects = Physics2D.OverlapCircleAll(this.transform.position, radius);
-        List<GameObject> aimRobots = GetNearAimRobots(arrayObjects);
+        aimRobots = GetNearAimRobots(arrayObjects);
+        aimRobotCount = aimRobots.Count;
         for (int i = 0; i < aimRobots.Count; i++) {
             aimRobots[i].GetComponent<AimRobotBehaviour>().isPlayable = true;
         }
@@ -71,6 +79,8 @@ public class DHCPower : MonoBehaviour {
             canCallEffect = false;
             callEffectCount = 0;
             rippleEffect.transform.localScale = Vector3.zero;
+            PlayerInfo.isUsingDHCPower = false;
+            dhcpLight.SetActive(false);
             yield break;
         }
         yield return new WaitForSeconds(effectTime);

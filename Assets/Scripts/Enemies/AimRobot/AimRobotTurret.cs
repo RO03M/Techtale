@@ -93,8 +93,8 @@ public class AimRobotTurret : MonoBehaviour {
         BulletHandler cloneHandler = bulletClone.GetComponent<BulletHandler>();
         cloneRb.velocity = new Vector2(cos * bulletSpeed, sin * bulletSpeed);
         cloneHandler.parentObject = this.transform.parent.gameObject;
+        cloneHandler.destroyTime = cloneDestroyTime;
         StartCoroutine(FireDelay());
-        Destroy(cloneRb, cloneDestroyTime);
     }
 
     private IEnumerator FireDelay() {

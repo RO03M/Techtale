@@ -99,6 +99,10 @@ MonoBehaviour:
     type: 3}
   bulletSpeed: 5
   cloneDestroyTime: 5
+  locked: 0
+  lockOptionsDegress: 0
+  fireDelay: 0
+  minDistance: 0
 --- !u!1 &2910176630873239883
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,5 +230,12 @@ MonoBehaviour:
     type: 3}
   defaultSprite: {fileID: -8442784916586730992, guid: a6d488505baa098438345bbd7e18ee96,
     type: 3}
+  fireDelay: 1
   isPlayable: 0
+  locked: 0
+  lockOptionsDegress: 0
+  minDistance: 10
   timeToBack: 5
+  particlesObj:
+  - {fileID: 4507126429520855135, guid: 2c9f5efdcdeec5e42a3df809505ec711, type: 3}
+  - {fileID: 2482720990956767185, guid: 25273b47f8bc6194fb5d292d4ccbcdb2, type: 3}

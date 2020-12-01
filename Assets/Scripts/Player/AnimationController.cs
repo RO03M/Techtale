@@ -16,16 +16,17 @@ public class AnimationController : MonoBehaviour {
     void Update() {
         VariablesUpdate();
         WalkAnim();
-        if (PlayerInfo.isJumping && !PlayerInfo.isFalling) AnimPlay("Jump");
+        if (AnimationData.CanJump()) AnimPlay("Jump");
         if (PlayerInfo.isFalling) AnimPlay("Falling");
-        if (PlayerInfo.isGrounded) AnimPlay("NormalMove");
+        if (AnimationData.CanMove()) AnimPlay("NormalMove");
+        if (PlayerInfo.isUsingDHCPower) AnimPlay("DHCPower");
     }
 
     void WalkAnim() {
         float inputX = Input.GetAxisRaw("Horizontal");
         bool isColliding = PlayerChecks.WallCollision(PlayerInfo.colliderCenter, PlayerInfo.colliderExtents, inputX);
         bool needFlip;
-        PlayerInfo.facing = (int)inputX;
+        PlayerInfo.facing = (int) inputX;
         animator.SetFloat("Speed", Mathf.Abs(inputX));
         if (isColliding) animator.SetFloat("Speed", 0);
         needFlip = PlayerInfo.facing == 1 ? false : true;

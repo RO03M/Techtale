@@ -17,14 +17,26 @@ public class InfoUpdater : MonoBehaviour {
     private void Update() {
         PlayerInfo.colliderCenter = collider.bounds.center;
         GroundedUpdate();
-        if (PlayerInfo.isGrounded) PlayerInfo.isJumping = false;
-        if (rb.velocity.y < 0) PlayerInfo.isFalling = true;
-        else PlayerInfo.isFalling = false;
+        JumpUpdate();
+        if (PlayerInfo.isUsingDHCPower) {
+            PlayerInfo.canMove = false;
+            PlayerInfo.canDash = false;
+            PlayerInfo.canJump = false;
+        } else {
+            if (!PlayerInfo.isDashing) PlayerInfo.canMove = true;
+            PlayerInfo.canJump = true;
+        }
     }
 
     private void GroundedUpdate() {
         if (rb.velocity.y == 0) PlayerInfo.isGrounded = PlayerChecks.IsGrounded(PlayerInfo.colliderCenter, PlayerInfo.colliderExtents);
         else PlayerInfo.isGrounded = false;
+    }
+
+    private void JumpUpdate() {
+        if (PlayerInfo.isGrounded) PlayerInfo.isJumping = false;
+        if (rb.velocity.y < 0) PlayerInfo.isFalling = true;
+        else PlayerInfo.isFalling = false;
     }
 
 }

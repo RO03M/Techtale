@@ -20,7 +20,7 @@ public class Jump : MonoBehaviour {
         jumpTime += Time.fixedDeltaTime;
         if (Input.GetKeyDown(KeyCode.Space)) jumpTime = 0;
 
-        if (jumpTime <= minJumpTime && PlayerInfo.isGrounded) {
+        if (jumpTime <= minJumpTime && PlayerInfo.isGrounded && PlayerInfo.canJump) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpTime = minJumpTime;
             PlayerChecks.GenerateParticle(particles);

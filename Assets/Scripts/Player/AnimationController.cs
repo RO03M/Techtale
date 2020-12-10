@@ -20,6 +20,7 @@ public class AnimationController : MonoBehaviour {
         if (PlayerInfo.isFalling) AnimPlay("Falling");
         if (AnimationData.CanMove()) AnimPlay("NormalMove");
         if (PlayerInfo.isUsingDHCPower) AnimPlay("DHCPower");
+        if (PlayerInfo.isDashing) AnimPlay("Dash");
     }
 
     void WalkAnim() {
@@ -40,5 +41,15 @@ public class AnimationController : MonoBehaviour {
     public void VariablesUpdate() {
         animator.SetBool("Grounded", PlayerInfo.isGrounded);
         animator.SetBool("Falling", PlayerInfo.isFalling);
+        // float normalizedVX = PlayerChecks.CheckPolar(rb.velocity.x);
+        // float normalizedVY = PlayerChecks.CheckPolar(rb.velocity.y);
+        // Debug.Log(normalizedVX + " " + normalizedVY);
+        // animator.SetFloat("NormalVX", normalizedVX);
+        // animator.SetFloat("NormalVY", normalizedVY);
+        // animator.SetBool("IsDashing", PlayerInfo.isDashing);
+    }
+
+    public void ChangeVariable(string varName, float value) {
+        animator.SetFloat(varName, value);
     }
 }

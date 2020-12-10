@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//this script has the Player's states at runtime of the game
 public static class PlayerInfo {
     
     public static bool canDash = true;
@@ -16,6 +17,7 @@ public static class PlayerInfo {
     public static bool isGrounded;
     public static bool isJumping = false;
     public static bool isUsingDHCPower = false;
+    public static float maxVerticalVelocity = 25;
     public static Vector2 velocity = Vector2.zero;
 
     public static int facing {

@@ -22,10 +22,12 @@ public class InfoUpdater : MonoBehaviour {
             PlayerInfo.canMove = false;
             PlayerInfo.canDash = false;
             PlayerInfo.canJump = false;
+            rb.velocity = Vector2.zero;
         } else {
             if (!PlayerInfo.isDashing) PlayerInfo.canMove = true;
-            PlayerInfo.canJump = true;
         }
+
+        if (rb.velocity.y < -PlayerInfo.maxVerticalVelocity) rb.velocity = new Vector2(rb.velocity.x, -PlayerInfo.maxVerticalVelocity);
     }
 
     private void GroundedUpdate() {

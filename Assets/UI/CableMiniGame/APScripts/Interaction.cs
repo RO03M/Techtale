@@ -6,11 +6,11 @@ using UnityEngine.Events;
 //This script is used to interact with the cable panels objects
 public class Interaction : MonoBehaviour {
     
-    public bool triggered;
-    public KeyCode interactKey;
     public EnableSystem enableSystem;
-
+    public KeyCode interactKey;
     public Sprite interactKeySprite;
+    public bool triggered;
+
     private GameObject spriteHandler;
 
     private void Start() {

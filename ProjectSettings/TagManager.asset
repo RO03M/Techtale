@@ -8,6 +8,7 @@ TagManager:
   - AimRobot
   - Router
   - TriggerIgnore
+  - SelectableText
   layers:
   - Default
   - TransparentFX

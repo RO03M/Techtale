@@ -8,4 +8,8 @@ public class EnableSystem : MonoBehaviour {
         this.gameObject.SetActive(true);
     }
 
+    public bool GetState() {
+        return this.GetComponent<TriggersData>().isCorrect;
+    }
+
 }

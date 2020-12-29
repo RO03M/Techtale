@@ -80,6 +80,7 @@ public class DHCPower : MonoBehaviour {
             callEffectCount = 0;
             rippleEffect.transform.localScale = Vector3.zero;
             PlayerInfo.isUsingDHCPower = false;
+            PlayerInfo.canJump = true;
             dhcpLight.SetActive(false);
             yield break;
         }

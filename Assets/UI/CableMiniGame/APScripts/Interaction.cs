@@ -9,8 +9,10 @@ public class Interaction : MonoBehaviour {
     public EnableSystem enableSystem;
     public KeyCode interactKey;
     public Sprite interactKeySprite;
+    public UnityEvent onCorrectMethod;
     public bool triggered;
 
+    private bool isCorrect;
     private GameObject spriteHandler;
 
     private void Start() {
@@ -25,6 +27,8 @@ public class Interaction : MonoBehaviour {
             }
         }
         spriteHandler.SetActive(triggered);
+        isCorrect = enableSystem.GetState();
+        if (isCorrect && onCorrectMethod != null) onCorrectMethod.Invoke();
     }
 
     private void OnTriggerStay2D(Collider2D other) {

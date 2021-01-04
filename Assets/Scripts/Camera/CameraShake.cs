@@ -22,7 +22,6 @@ public class CameraShake : MonoBehaviour {
         Vector3 shakePosition = new Vector3(playerTransform.position.x, playerTransform.position.y, -10) + new Vector3(Mathf.Cos(randomNumber), Mathf.Sin(randomNumber), 0) * shakeIntensity;
         this.transform.position = shakePosition;
         yield return new WaitForSeconds(0.05f);
-        this.transform.position = originalPosition;
     }
 
     IEnumerator StopShaking() {

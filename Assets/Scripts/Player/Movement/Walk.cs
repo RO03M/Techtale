@@ -43,6 +43,7 @@ public class Walk : MonoBehaviour {
 
     void DustSpawner() {
         //This function calls all the other functions to generate dust
+        if (Random.Range(0, 1000) >= 900 && rb.velocity.x != 0 && PlayerInfo.isGrounded) PlayerChecks.GenerateParticle(dust);
         SpeedBackDust();
     }
 

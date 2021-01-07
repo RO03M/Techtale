@@ -27,9 +27,10 @@ public class AnimationController : MonoBehaviour {
         float inputX = Input.GetAxisRaw("Horizontal");
         bool isColliding = PlayerChecks.WallCollision(PlayerInfo.colliderCenter, PlayerInfo.colliderExtents, inputX);
         bool needFlip;
-        PlayerInfo.facing = (int) inputX;
+        PlayerInfo.facing = (int)inputX;
         animator.SetFloat("Speed", Mathf.Abs(inputX));
-        if (isColliding) animator.SetFloat("Speed", 0);
+        if (isColliding && PlayerInfo.isGrounded) AnimPlay("Pushing");
+        else if (isColliding) animator.SetFloat("Speed", 0);
         needFlip = PlayerInfo.facing == 1 ? false : true;
         spriteRenderer.flipX = needFlip;
     }

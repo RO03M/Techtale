@@ -19,9 +19,12 @@ public class PlayerChecks {
 
         Collider2D collider = Physics2D.OverlapArea(pointA, pointB);
         if (collider) {
+            Debug.Log(collider.isTrigger);
             if (collider.isTrigger) return false;
+            else PlayerInfo.isColliding = true;
             return true;
         }
+        PlayerInfo.isColliding = false;
         return false;
     }
 

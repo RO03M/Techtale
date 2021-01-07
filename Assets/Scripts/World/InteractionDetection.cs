@@ -7,7 +7,7 @@ public class InteractionDetection : MonoBehaviour {
 
     public KeyCode keyTrigger;
     public UnityEvent method;
-    
+
     private SpriteRenderer spriteRenderer;
     private KeyMesh keyMesh;
     private Camera m_Camera;

@@ -12,6 +12,7 @@ public static class PlayerInfo {
     public static Vector2 colliderExtents;
     public static float dashTime;
     private static int direction = 1;//1 is default facing
+    public static bool isColliding = false;
     public static bool isDashing = false;
     public static bool isFalling = false;
     public static bool isGrounded;

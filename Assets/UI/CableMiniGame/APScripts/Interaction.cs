@@ -10,6 +10,7 @@ public class Interaction : MonoBehaviour {
     public KeyCode interactKey;
     public Sprite interactKeySprite;
     public UnityEvent onCorrectMethod;
+    public UnityEvent onWrongMethod;
     public bool triggered;
 
     private bool isCorrect;
@@ -29,6 +30,7 @@ public class Interaction : MonoBehaviour {
         spriteHandler.SetActive(triggered);
         isCorrect = enableSystem.GetState();
         if (isCorrect && onCorrectMethod != null) onCorrectMethod.Invoke();
+        else if (!isCorrect && onWrongMethod != null) onWrongMethod.Invoke();
     }
 
     private void OnTriggerStay2D(Collider2D other) {

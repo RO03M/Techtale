@@ -13,7 +13,6 @@ public class TriggerController : MonoBehaviour {
 
     private void OnMouseDown() {
         RemoveAttachment();
-        Debug.Log(triggerID);
     }
 
     public void RemoveAttachment() {
@@ -24,7 +23,7 @@ public class TriggerController : MonoBehaviour {
     }
 
     public void UpdateTriggerData() {
-        TriggersData.cablesOrder[triggerID] = attachmentID;
+        this.transform.parent.parent.parent.GetComponent<TriggersData>().cablesOrder[triggerID] = attachmentID;
     }
 
 }

@@ -19,8 +19,11 @@ public class CablePanelPopulate : MonoBehaviour {
 
     private void GenerateCablePanel() {
         GameObject cablePanelClone = Instantiate(cablePanelPrefab);
+        cablePanelClone.name = "Cable Panel " + routerID;
         cablePanelClone.transform.SetParent(canvas.transform);
         cablePanelClone.transform.localScale = Vector3.one;
+        cablePanelClone.GetComponent<TriggersData>().routerID = routerID;
+        cablePanelClone.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         PrefabAssignment(cablePanelClone);
     }
 

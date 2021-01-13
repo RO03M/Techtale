@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TriggerPopulate : MonoBehaviour {
     
     public Sprite triggerSprite;
+    public int routerID;
 
     private Vector2 colliderSize;
 

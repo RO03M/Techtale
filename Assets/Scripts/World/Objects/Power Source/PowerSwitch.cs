@@ -23,6 +23,8 @@ public class PowerSwitch : MonoBehaviour {
         shake.canShake = true;
         if (isOn) spriteRenderer.sprite = onSprite;
         else spriteRenderer.sprite = offSprite;
+        GlobalData.hasPower = isOn;
+        Debug.Log(GlobalData.hasPower);
     }
 
 }

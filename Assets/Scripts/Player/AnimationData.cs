@@ -10,7 +10,7 @@ public static class AnimationData {
     }
 
     public static bool CanMove() {
-        if (PlayerInfo.isGrounded && !PlayerInfo.isUsingDHCPower && !PlayerInfo.isDashing && !PlayerInfo.isColliding) return true;
+        if (PlayerInfo.isGrounded && !PlayerInfo.isUsingDHCPower && !PlayerInfo.isDashing && (!PlayerInfo.isColliding || Input.GetAxisRaw("Horizontal") == 0)) return true;
         return false;
     }
 

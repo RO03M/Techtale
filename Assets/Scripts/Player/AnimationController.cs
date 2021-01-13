@@ -29,8 +29,9 @@ public class AnimationController : MonoBehaviour {
         bool needFlip;
         PlayerInfo.facing = (int)inputX;
         animator.SetFloat("Speed", Mathf.Abs(inputX));
-        if (isColliding && PlayerInfo.isGrounded) AnimPlay("Pushing");
-        else if (isColliding) animator.SetFloat("Speed", 0);
+        if (PlayerInfo.isColliding && PlayerInfo.isGrounded && Input.GetAxisRaw("Horizontal") != 0) {
+            AnimPlay("Pushing");
+        } else if (PlayerInfo.isColliding) animator.SetFloat("Speed", 0);
         needFlip = PlayerInfo.facing == 1 ? false : true;
         spriteRenderer.flipX = needFlip;
     }

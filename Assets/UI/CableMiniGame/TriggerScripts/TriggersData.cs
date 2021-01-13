@@ -8,17 +8,23 @@ using UnityEngine;
 //                                      gGoBbOmM                            oOgBbGmM
 public class TriggersData : MonoBehaviour {
     
-    public static List<int?> cablesOrder = new List<int?>() {null, null, null, null, null, null, null, null};
+    public List<int?> cablesOrder = new List<int?>() {null, null, null, null, null, null, null, null};
     public bool isCorrect = false;
+    public int routerID;
 
     private List<int?> T568A = new List<int?>() {0, 1, 2, 3, 4, 5, 6, 7};
     private List<int?> T568B = new List<int?>() {2, 5, 0, 3, 4, 1, 6, 7};
+
+    private void OnEnable() {
+        this.transform.GetChild(0).GetChild(1).GetComponent<TriggerPopulate>().routerID = routerID;
+    }
 
     private void Update() {
         CheckOrder();
     }
 
     private void CheckOrder() {
+        
         for (int i = 0; i < 8; i++) {
             if (T568A[i] == cablesOrder[i]) isCorrect = true;
             else {

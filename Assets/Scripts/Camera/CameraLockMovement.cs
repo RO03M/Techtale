@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CameraLockMovement : MonoBehaviour {
 
-    public Transform Player;
+    public bool canFollow = true;
     public float maxYDistance = 3f;
     public float maxXDistance = 3f;
+    public Transform Player;
     [Range(0, 1)]
     public float transitionTime = .5f;
 
@@ -18,10 +19,12 @@ public class CameraLockMovement : MonoBehaviour {
 
     void Update() {
         playerPosition = Player.position;
-        float yCamDistance = transform.position.y - playerPosition.y;
-        float xCamDistance = transform.position.x - playerPosition.x;
-        if ((yCamDistance > maxYDistance || yCamDistance < -maxYDistance) || (xCamDistance > maxXDistance || xCamDistance < -maxXDistance)) {
-            transform.position = Vector3.Slerp(transform.position, new Vector3(playerPosition.x, playerPosition.y, -10), transitionTime);
+        if (canFollow) {
+            float yCamDistance = transform.position.y - playerPosition.y;
+            float xCamDistance = transform.position.x - playerPosition.x;
+            if ((yCamDistance > maxYDistance || yCamDistance < -maxYDistance) || (xCamDistance > maxXDistance || xCamDistance < -maxXDistance)) {
+                transform.position = Vector3.Slerp(transform.position, new Vector3(playerPosition.x, playerPosition.y, -10), transitionTime);
+            }
         }
     }
 
